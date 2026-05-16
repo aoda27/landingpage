@@ -1,0 +1,292 @@
+/* ==============================================
+   section4.css – Download CTA Section Styles
+   Modern Redesign
+   ============================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --teal:        #1b627c;
+  --teal-dark:   #144e63;
+  --teal-light:  #2489a8;
+  --teal-glow:   #3ab5d8;
+  --accent:      #00e5c0;
+  --text-dark:   #0e1f26;
+  --text-mid:    #3d5c66;
+  --white:       #ffffff;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #f0f8fc;
+  color: var(--text-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ----- NAVBAR ----- */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 56px;
+  height: 68px;
+  background: rgba(240,248,252,0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(52,185,216,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.logo-text {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--teal-dark);
+  letter-spacing: -0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 0; height: 2px;
+  background: var(--teal-glow);
+  border-radius: 2px;
+  transition: width 0.25s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active { color: var(--teal); }
+.nav-links a:hover::after,
+.nav-links a.active::after { width: 100%; }
+
+.btn-download {
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--teal-light), var(--teal-dark));
+  padding: 9px 22px;
+  border-radius: 50px;
+  transition: box-shadow 0.25s, transform 0.2s;
+  box-shadow: 0 4px 14px rgba(27,98,124,0.35);
+}
+
+.btn-download:hover {
+  box-shadow: 0 6px 22px rgba(27,98,124,0.5);
+  transform: translateY(-1px);
+}
+
+/* ----- DOWNLOAD SECTION ----- */
+.download-section {
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - 68px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dark gradient bg */
+.download-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0d2530 0%, #144e63 50%, #1b7a6e 100%);
+  z-index: 0;
+}
+
+/* Noise texture overlay */
+.download-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Glow orbs */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glow-orb-1 {
+  width: 500px; height: 500px;
+  top: -200px; right: -100px;
+  background: radial-gradient(circle, rgba(0,229,192,0.15) 0%, transparent 70%);
+}
+
+.glow-orb-2 {
+  width: 400px; height: 400px;
+  bottom: -150px; left: -100px;
+  background: radial-gradient(circle, rgba(52,185,216,0.2) 0%, transparent 70%);
+}
+
+.download-inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 80px 60px;
+  max-width: 680px;
+}
+
+.dl-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0,229,192,0.12);
+  border: 1px solid rgba(0,229,192,0.25);
+  border-radius: 50px;
+  padding: 5px 16px 5px 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.dl-eyebrow-dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.download-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.18;
+  letter-spacing: -0.8px;
+  margin-bottom: 20px;
+}
+
+.download-title .accent-word {
+  background: linear-gradient(135deg, var(--teal-glow), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.download-desc {
+  font-size: 0.93rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.7);
+  max-width: 500px;
+  margin: 0 auto 16px;
+}
+
+.download-tagline {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 48px;
+  letter-spacing: 0.3px;
+}
+
+/* ----- STORE BUTTONS ----- */
+.store-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.store-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 16px 28px;
+  text-decoration: none;
+  min-width: 196px;
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.store-btn:hover {
+  background: rgba(255,255,255,0.14);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+}
+
+.store-icon {
+  width: 34px; height: 34px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.store-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.store-sub {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.store-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: 0.2px;
+  line-height: 1;
+}
